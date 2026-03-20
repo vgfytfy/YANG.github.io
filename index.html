@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>杨朝钰 | 金融学 · 个人主页</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0a1a;
+            color: #f0eaff;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+        }
+
+        /* 南京大学紫色主题 #4B2E8A → 渐变深紫 */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(30, 20, 55, 0.92) 0%, rgba(20, 12, 42, 0.96) 100%);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            box-shadow: 0 25px 45px -12px rgba(75, 46, 138, 0.5);
+            overflow: hidden;
+        }
+
+        /* 头部语言切换 */
+        .header {
+            padding: 1.2rem 2rem;
+            background: rgba(20, 12, 42, 0.7);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.4);
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.6rem;
+            background: rgba(75, 46, 138, 0.4);
+            padding: 0.3rem;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #d9c8ff;
+            font-family: inherit;
+        }
+
+        .lang-btn.active {
+            background: #8b5cf6;
+            color: white;
+            box-shadow: 0 2px 12px rgba(139, 92, 246, 0.5);
+        }
+
+        /* 主内容区：个人信息 + 照片墙预览 */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            padding: 2.5rem 2rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.25);
+        }
+
+        .info-area {
+            flex: 1.6;
+        }
+
+        .name {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #c4b5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-personality {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.25);
+            border-left: 3px solid #a78bfa;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .detail-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .detail-item {
+            background: rgba(75, 46, 138, 0.35);
+            border-radius: 1rem;
+            padding: 0.5rem 1.1rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .detail-item i {
+            color: #a78bfa;
+            width: 1.2rem;
+        }
+
+        .contact-email {
+            background: rgba(139, 92, 246, 0.2);
+            border-radius: 2rem;
+            padding: 0.5rem 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(139, 92, 246, 0.5);
+        }
+
+        .contact-email a {
+            color: #e0d6ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .contact-email a:hover {
+            color: white;
+        }
+
+        /* 照片墙区域（右侧预览）*/
+        .photo-wall-preview {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .wall-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #c4b5fd;
+        }
+
+        .grid-photos-preview {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .photo-card-small {
+            background: rgba(75, 46, 138, 0.35);
+            border-radius: 1rem;
+            aspect-ratio: 1 / 1;
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-card-small:hover {
+            border-color: #a78bfa;
+            transform: translateY(-3px);
+            background: rgba(139, 92, 246, 0.3);
+        }
+
+        .photo-card-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder-icon {
+            font-size: 1.8rem;
+            color: #9b87cf;
+            margin-bottom: 0.4rem;
+        }
+
+        .photo-placeholder-text {
+            font-size: 0.7rem;
+            color: #b9a9f0;
+        }
+
+        /* 卡片通用样式 */
+        .card {
+            padding: 1.8rem 2rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: #ddd0ff;
+        }
+
+        .section-title i {
+            color: #a78bfa;
+            font-size: 1.3rem;
+        }
+
+        .bio-text {
+            background: rgba(75, 46, 138, 0.25);
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.5rem;
+            line-height: 1.65;
+            border-left: 3px solid #a78bfa;
+            font-size: 0.95rem;
+        }
+
+        /* 技能条 */
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+        }
+        .skill-bar-bg {
+            background: #2d2448;
+            border-radius: 20px;
+            height: 8px;
+            overflow: hidden;
+        }
+        .skill-bar-fill {
+            background: linear-gradient(90deg, #8b5cf6, #c084fc);
+            width: 65%;
+            height: 100%;
+            border-radius: 20px;
+            box-shadow: 0 0 6px rgba(139, 92, 246, 0.6);
+        }
+
+        .cert-badge {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .cert-item {
+            background: #2d2448;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid #6d4fc7;
+        }
+
+        /* 荣誉列表 */
+        .honor-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        .honor-tag {
+            background: rgba(139, 92, 246, 0.2);
+            padding: 0.45rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            border-left: 2px solid #a78bfa;
+        }
+
+        /* 兴趣爱好 */
+        .interests-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .interest-tag {
+            background: rgba(139, 92, 246, 0.2);
+            padding: 0.45rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(167, 139, 250, 0.5);
+        }
+
+        /* 教育经历 & 职务 */
+        .edu-item {
+            margin-bottom: 1.3rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #a78bfa;
+        }
+        .edu-period {
+            font-size: 0.75rem;
+            color: #bcaeff;
+        }
+        .edu-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0.2rem 0 0.3rem;
+        }
+        .edu-detail {
+            font-size: 0.85rem;
+            color: #cdc2f0;
+        }
+        .duty-badge {
+            margin-top: 0.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .duty-item {
+            background: #352a55;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+        }
+
+        /* 最底部照片墙（四宫格） */
+        .photo-wall-bottom {
+            padding: 1.8rem 2rem 1.5rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.25);
+        }
+        .bottom-wall-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #c4b5fd;
+        }
+        .photo-grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .photo-card-bottom {
+            background: rgba(75, 46, 138, 0.4);
+            border-radius: 1.2rem;
+            aspect-ratio: 1 / 1;
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            overflow: hidden;
+            position: relative;
+        }
+        .photo-card-bottom:hover {
+            border-color: #a78bfa;
+            transform: scale(1.02);
+            background: rgba(139, 92, 246, 0.3);
+        }
+        .photo-card-bottom img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .update-footer {
+            padding: 1rem 2rem 1.5rem;
+            text-align: right;
+            font-size: 0.7rem;
+            color: #9b8ec7;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        @media (max-width: 780px) {
+            .hero {
+                flex-direction: column;
+            }
+            .photo-grid-bottom {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-photos-preview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .update-footer {
+                text-align: center;
+            }
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="zh">中文</button>
+            <button class="lang-btn" data-lang="en">English</button>
+        </div>
+    </div>
+
+    <!-- 顶部个人信息 + 小型照片墙预览 -->
+    <div class="hero">
+        <div class="info-area">
+            <div class="name" id="i18n-name">杨朝钰</div>
+            <div class="badge-personality" id="i18n-personality">🔥 热情开朗 · 善于沟通表达</div>
+            <div class="detail-grid">
+                <span class="detail-item"><i class="fas fa-venus-mars"></i> <span id="i18n-gender">男</span></span>
+                <span class="detail-item"><i class="fas fa-map-marker-alt"></i> <span id="i18n-hometown">贵州省</span></span>
+                <span class="detail-item"><i class="fas fa-university"></i> <span id="i18n-school">华东政法大学 · 金融学</span></span>
+            </div>
+            <div class="contact-email">
+                <i class="fas fa-envelope"></i> 
+                <a href="mailto:3205617959@qq.com" id="i18n-email">3205617959@qq.com</a>
+            </div>
+        </div>
+        <div class="photo-wall-preview">
+            <div class="wall-title"><i class="fas fa-camera"></i> <span id="previewWallTitle">瞬间·预览</span></div>
+            <div class="grid-photos-preview" id="previewGrid"></div>
+            <div style="font-size:0.65rem; margin-top:0.5rem; color:#a58fdf; text-align:center;" id="previewHint">点击上传照片 (JPG/PNG)</div>
+        </div>
+    </div>
+
+    <!-- 个人简介 -->
+    <div class="card">
+        <div class="section-title"><i class="fas fa-user-astronaut"></i><span id="i18n-profile-title">个人简介</span></div>
+        <div class="bio-text" id="i18n-bio">
+            杨朝钰，华东政法大学金融学专业本科在读，性格热情开朗，善于沟通表达，具备优秀的团队协作与领导能力。熟练运用Python、Excel、WPS进行数据分析与办公，拥有主持人特长。英语CET-4/CET-6已通过。曾担任班级副班长、文艺委员等职务，善于组织协调，追求在金融领域实现复合型发展。
+        </div>
+    </div>
+
+    <!-- 技能 + 英语证书 -->
+    <div class="card">
+        <div class="section-title"><i class="fas fa-code"></i><span id="i18n-skills-title">核心技能 · 熟练度</span></div>
+        <div id="skillsContainer"></div>
+        <div class="cert-badge" id="certContainer"></div>
+    </div>
+
+    <!-- 个人荣誉 -->
+    <div class="card">
+        <div class="section-title"><i class="fas fa-trophy"></i><span id="i18n-honors-title">个人荣誉</span></div>
+        <div class="honor-list" id="honorContainer"></div>
+    </div>
+
+    <!-- 兴趣爱好 -->
+    <div class="card">
+        <div class="section-title"><i class="fas fa-heart"></i><span id="i18n-interests-title">兴趣爱好</span></div>
+        <div class="interests-wrapper" id="interestsContainer"></div>
+    </div>
+
+    <!-- 教育经历 + 职务 -->
+    <div class="card">
+        <div class="section-title"><i class="fas fa-graduation-cap"></i><span id="i18n-edu-title">教育经历 & 学生工作</span></div>
+        <div id="eduContainer"></div>
+        <div id="dutyContainer" style="margin-top: 1rem;"></div>
+    </div>
+
+    <!-- 底部四宫格照片墙 -->
+    <div class="photo-wall-bottom">
+        <div class="bottom-wall-title"><i class="fas fa-images"></i> <span id="bottomWallTitle">照片墙</span></div>
+        <div class="photo-grid-bottom" id="photoGridBottom"></div>
+        <div style="font-size:0.7rem; margin-top:0.7rem; color:#a58fdf; text-align:center;" id="bottomHint">点击上传照片，留住精彩瞬间</div>
+    </div>
+
+    <!-- 最后更新日期 -->
+    <div class="update-footer">
+        <i class="far fa-calendar-alt"></i> <span id="i18n-last-label">最后更新日期：</span> 
+        <span id="lastUpdateValue">2026年3月20日</span>
+    </div>
+</div>
+
+<script>
+    // 多语言内容
+    const content = {
+        zh: {
+            name: "杨朝钰", personality: "🔥 热情开朗 · 善于沟通表达", gender: "男", hometown: "贵州省", school: "华东政法大学 · 金融学", email: "3205617959@qq.com",
+            profileTitle: "个人简介",
+            bio: "杨朝钰，华东政法大学金融学专业本科在读（2024级）。性格热情开朗，善于沟通表达，具备优秀的团队协作能力。掌握Python数据分析、Excel高级应用及WPS办公技能，拥有主持人特长，通过英语CET-4/CET-6。曾担任班级副班长、文艺委员，组织多项活动，致力于成为兼具金融素养与领导力的复合型人才。",
+            skillsTitle: "核心技能 · 熟练度",
+            skillsList: [
+                { name: "Python", level: "中等", width: 65 },
+                { name: "Excel", level: "中等", width: 65 },
+                { name: "WPS (文字/表格/演示)", level: "中等", width: 65 },
+                { name: "主持人 (活动/会议主持)", level: "中等", width: 65 }
+            ],
+            certs: ["📘 英语 CET-4 (通过)", "📙 英语 CET-6 (通过)"],
+            honors: ["🏆 华东政法大学羽毛球新生杯 季军", "🏅 华东政法大学商学院羽毛球杯 冠军", "🎖️ 高中校羽毛球赛 冠亚军多次", "✍️ 高中书法比赛 冠军"],
+            interests: ["🎹 钢琴 (6级)", "🎮 Valorant", "🏸 羽毛球 (3级水平)", "💃 拉丁/爵士舞", "✈️ 旅游"],
+            eduTitle: "教育经历 & 学生工作",
+            education: [
+                { period: "2024年9月 — 至今", title: "华东政法大学 金融学 本科在读", detail: "主修课程：金融学、计量经济学、Python金融分析、公司理财；积极参与校金融案例大赛。" },
+                { period: "2021年9月 — 2024年6月", title: "贵州省都匀第一中学", detail: "高中阶段成绩优异，理科综合突出，多次获校级三好学生。" }
+            ],
+            duties: ["📌 班级副班长", "🎭 文艺委员", "📖 数学/英语课代表"],
+            lastLabel: "最后更新日期：",
+            previewTitle: "瞬间·预览", bottomTitle: "照片墙", previewHint: "点击上传照片 (JPG/PNG)"
+        },
+        en: {
+            name: "Zhaoyu Yang", personality: "🔥 Passionate & Outgoing · Excellent Communication", gender: "Male", hometown: "Guizhou, China", school: "ECUPL · Finance", email: "3205617959@qq.com",
+            profileTitle: "Profile",
+            bio: "Zhaoyu Yang is an undergraduate in Finance at East China University of Political Science and Law (Class of 2024). Enthusiastic, communicative, skilled in Python, Excel, WPS, and also a trained host. He has passed CET-4 and CET-6, served as class vice monitor and arts commissioner, and is dedicated to becoming a versatile financial talent.",
+            skillsTitle: "Core Skills · Proficiency",
+            skillsList: [
+                { name: "Python", level: "Intermediate", width: 65 },
+                { name: "Excel", level: "Intermediate", width: 65 },
+                { name: "WPS (Office Suite)", level: "Intermediate", width: 65 },
+                { name: "Event Hosting", level: "Intermediate", width: 65 }
+            ],
+            certs: ["📘 CET-4 (Passed)", "📙 CET-6 (Passed)"],
+            honors: ["🏆 ECUPL Badminton Freshman Cup 3rd Place", "🏅 ECUPL Business School Badminton Cup Champion", "🎖️ High School Badminton Champion & Runner-up", "✍️ High School Calligraphy Champion"],
+            interests: ["🎹 Piano (Level 6)", "🎮 Valorant", "🏸 Badminton (Level 3)", "💃 Latin/Jazz Dance", "✈️ Traveling"],
+            eduTitle: "Education & Student Leadership",
+            education: [
+                { period: "Sep 2024 – Present", title: "East China University of Political Science and Law, B.A. in Finance", detail: "Core courses: Finance, Econometrics, Python for Financial Analysis, Corporate Finance." },
+                { period: "Sep 2021 – Jun 2024", title: "Duyun No.1 High School, Guizhou", detail: "Excellent academic performance, strong in mathematics and sciences." }
+            ],
+            duties: ["📌 Class Vice Monitor", "🎭 Arts Commissioner", "📖 Subject Representative (Math/English)"],
+            lastLabel: "Last Updated: ",
+            previewTitle: "Moments · Preview", bottomTitle: "Photo Wall", previewHint: "Click to upload (JPG/PNG)"
+        }
+    };
+
+    let currentLang = "zh";
+    let photoImages = ["", "", "", ""]; // 底部四个照片
+
+    // 渲染底部照片墙 + 顶部预览小图
+    function renderPhotoWalls(lang) {
+        const bottomGrid = document.getElementById("photoGridBottom");
+        const previewGrid = document.getElementById("previewGrid");
+        if (!bottomGrid || !previewGrid) return;
+        bottomGrid.innerHTML = "";
+        previewGrid.innerHTML = "";
+        
+        for (let i = 0; i < 4; i++) {
+            // 底部卡片
+            const card = document.createElement("div");
+            card.className = "photo-card-bottom";
+            card.setAttribute("data-index", i);
+            if (photoImages[i] && photoImages[i] !== "") {
+                const img = document.createElement("img");
+                img.src = photoImages[i];
+                card.appendChild(img);
+            } else {
+                const icon = document.createElement("i");
+                icon.className = "fas fa-camera photo-placeholder-icon";
+                const text = document.createElement("span");
+                text.className = "photo-placeholder-text";
+                text.innerText = lang === "zh" ? "上传" : "Upload";
+                card.appendChild(icon);
+                card.appendChild(text);
+            }
+            card.addEventListener("click", (e) => openFileUpload(i));
+            bottomGrid.appendChild(card);
+            
+            // 顶部预览小卡 (同样内容)
+            const previewCard = document.createElement("div");
+            previewCard.className = "photo-card-small";
+            if (photoImages[i] && photoImages[i] !== "") {
+                const img = document.createElement("img");
+                img.src = photoImages[i];
+                previewCard.appendChild(img);
+            } else {
+                const icon = document.createElement("i");
+                icon.className = "fas fa-camera photo-placeholder-icon";
+                const text = document.createElement("span");
+                text.className = "photo-placeholder-text";
+                text.innerText = lang === "zh" ? "添加" : "Add";
+                previewCard.appendChild(icon);
+                previewCard.appendChild(text);
+            }
+            previewCard.addEventListener("click", (e) => openFileUpload(i));
+            previewGrid.appendChild(previewCard);
+        }
+        // 更新文案
+        document.getElementById("previewWallTitle").innerText = content[lang].previewTitle;
+        document.getElementById("bottomWallTitle").innerText = content[lang].bottomTitle;
+        document.getElementById("previewHint").innerText = content[lang].previewHint;
+        document.getElementById("bottomHint").innerHTML = content[lang].previewHint;
+    }
+
+    function openFileUpload(index) {
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/jpeg,image/png";
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    photoImages[index] = ev.target.result;
+                    renderPhotoWalls(currentLang);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert(currentLang === "zh" ? "请选择 JPG 或 PNG 格式图片" : "Please select JPG/PNG image");
+            }
+        };
+        input.click();
+    }
+
+    function renderSkills(data) {
+        const container = document.getElementById("skillsContainer");
+        container.innerHTML = "";
+        data.skillsList.forEach(s => {
+            const div = document.createElement("div");
+            div.className = "skill-item";
+            div.innerHTML = `<div class="skill-header"><span>${s.name}</span><span style="opacity:0.7;">${s.level}</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: ${s.width}%;"></div></div>`;
+            container.appendChild(div);
+        });
+        const certDiv = document.getElementById("certContainer");
+        certDiv.innerHTML = "";
+        data.certs.forEach(c => { const span = document.createElement("span"); span.className="cert-item"; span.innerText=c; certDiv.appendChild(span); });
+    }
+
+    function renderHonors(data) {
+        const container = document.getElementById("honorContainer");
+        container.innerHTML = "";
+        data.honors.forEach(h => { const tag = document.createElement("div"); tag.className="honor-tag"; tag.innerText = h; container.appendChild(tag); });
+    }
+
+    function renderInterests(data) {
+        const container = document.getElementById("interestsContainer");
+        container.innerHTML = "";
+        data.interests.forEach(i => { const tag = document.createElement("span"); tag.className="interest-tag"; tag.innerText=i; container.appendChild(tag); });
+    }
+
+    function renderEducation(data) {
+        const container = document.getElementById("eduContainer");
+        container.innerHTML = "";
+        data.education.forEach(edu => {
+            const div = document.createElement("div"); div.className="edu-item";
+            div.innerHTML = `<div class="edu-period">${edu.period}</div><div class="edu-title">${edu.title}</div><div class="edu-detail">${edu.detail}</div>`;
+            container.appendChild(div);
+        });
+        const dutyDiv = document.getElementById("dutyContainer");
+        dutyDiv.innerHTML = `<div class="duty-badge">${data.duties.map(d => `<span class="duty-item">${d}</span>`).join('')}</div>`;
+    }
+
+    function renderAll(lang) {
+        const data = content[lang];
+        document.getElementById("i18n-name").innerText = data.name;
+        document.getElementById("i18n-personality").innerText = data.personality;
+        document.getElementById("i18n-gender").innerText = data.gender;
+        document.getElementById("i18n-hometown").innerText = data.hometown;
+        document.getElementById("i18n-school").innerText = data.school;
+        const emailLink = document.getElementById("i18n-email");
+        emailLink.innerText = data.email;
+        emailLink.href = `mailto:${data.email}`;
+        document.getElementById("i18n-profile-title").innerText = data.profileTitle;
+        document.getElementById("i18n-bio").innerText = data.bio;
+        document.getElementById("i18n-skills-title").innerText = data.skillsTitle;
+        document.getElementById("i18n-honors-title").innerText = (lang === "zh" ? "个人荣誉" : "Honors");
+        document.getElementById("i18n-interests-title").innerText = (lang === "zh" ? "兴趣爱好" : "Interests");
+        document.getElementById("i18n-edu-title").innerText = data.eduTitle;
+        document.getElementById("i18n-last-label").innerHTML = `<i class="far fa-calendar-alt"></i> ${data.lastLabel}`;
+        document.getElementById("lastUpdateValue").innerText = (lang === "zh") ? "2026年3月20日" : "March 20, 2026";
+        
+        renderSkills(data);
+        renderHonors(data);
+        renderInterests(data);
+        renderEducation(data);
+        renderPhotoWalls(lang);
+    }
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        renderAll(lang);
+        document.querySelectorAll(".lang-btn").forEach(btn => {
+            if(btn.getAttribute("data-lang") === lang) btn.classList.add("active");
+            else btn.classList.remove("active");
+        });
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => setLanguage(btn.getAttribute("data-lang")));
+    });
+    setLanguage("zh");
+</script>
+</body>
+</html>
+Create personal homepage
