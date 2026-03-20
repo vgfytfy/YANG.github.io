@@ -21,7 +21,6 @@
             padding: 2rem 1.5rem;
         }
 
-        /* 南京大学紫色主题 #4B2E8A → 渐变深紫 */
         .container {
             max-width: 1280px;
             margin: 0 auto;
@@ -33,7 +32,6 @@
             overflow: hidden;
         }
 
-        /* 头部语言切换 */
         .header {
             padding: 1.2rem 2rem;
             background: rgba(20, 12, 42, 0.7);
@@ -49,7 +47,6 @@
             background: rgba(75, 46, 138, 0.4);
             padding: 0.3rem;
             border-radius: 60px;
-            backdrop-filter: blur(4px);
         }
 
         .lang-btn {
@@ -62,7 +59,6 @@
             cursor: pointer;
             transition: all 0.2s ease;
             color: #d9c8ff;
-            font-family: inherit;
         }
 
         .lang-btn.active {
@@ -71,17 +67,13 @@
             box-shadow: 0 2px 12px rgba(139, 92, 246, 0.5);
         }
 
-        /* 主内容区：个人信息 + 照片墙预览 */
         .hero {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
             padding: 2.5rem 2rem;
             border-bottom: 1px solid rgba(139, 92, 246, 0.25);
         }
 
         .info-area {
-            flex: 1.6;
+            width: 100%;
         }
 
         .name {
@@ -145,74 +137,12 @@
             color: #e0d6ff;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
         }
 
         .contact-email a:hover {
             color: white;
         }
 
-        /* 照片墙区域（右侧预览）*/
-        .photo-wall-preview {
-            flex: 1;
-            min-width: 260px;
-        }
-
-        .wall-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: #c4b5fd;
-        }
-
-        .grid-photos-preview {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .photo-card-small {
-            background: rgba(75, 46, 138, 0.35);
-            border-radius: 1rem;
-            aspect-ratio: 1 / 1;
-            border: 1px solid rgba(139, 92, 246, 0.4);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.25s;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .photo-card-small:hover {
-            border-color: #a78bfa;
-            transform: translateY(-3px);
-            background: rgba(139, 92, 246, 0.3);
-        }
-
-        .photo-card-small img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .photo-placeholder-icon {
-            font-size: 1.8rem;
-            color: #9b87cf;
-            margin-bottom: 0.4rem;
-        }
-
-        .photo-placeholder-text {
-            font-size: 0.7rem;
-            color: #b9a9f0;
-        }
-
-        /* 卡片通用样式 */
         .card {
             padding: 1.8rem 2rem;
             border-bottom: 1px solid rgba(139, 92, 246, 0.2);
@@ -242,7 +172,6 @@
             font-size: 0.95rem;
         }
 
-        /* 技能条 */
         .skill-item {
             margin-bottom: 1.2rem;
         }
@@ -263,7 +192,6 @@
             width: 65%;
             height: 100%;
             border-radius: 20px;
-            box-shadow: 0 0 6px rgba(139, 92, 246, 0.6);
         }
 
         .cert-badge {
@@ -281,7 +209,6 @@
             border: 1px solid #6d4fc7;
         }
 
-        /* 荣誉列表 */
         .honor-list {
             display: flex;
             flex-wrap: wrap;
@@ -296,7 +223,6 @@
             border-left: 2px solid #a78bfa;
         }
 
-        /* 兴趣爱好 */
         .interests-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -312,7 +238,6 @@
             border: 1px solid rgba(167, 139, 250, 0.5);
         }
 
-        /* 教育经历 & 职务 */
         .edu-item {
             margin-bottom: 1.3rem;
             padding-left: 0.5rem;
@@ -344,7 +269,6 @@
             font-size: 0.7rem;
         }
 
-        /* 最底部照片墙（四宫格） */
         .photo-wall-bottom {
             padding: 1.8rem 2rem 1.5rem;
             border-top: 1px solid rgba(139, 92, 246, 0.25);
@@ -375,7 +299,6 @@
             cursor: pointer;
             transition: all 0.2s;
             overflow: hidden;
-            position: relative;
         }
         .photo-card-bottom:hover {
             border-color: #a78bfa;
@@ -387,6 +310,15 @@
             height: 100%;
             object-fit: cover;
         }
+        .photo-placeholder-icon {
+            font-size: 1.8rem;
+            color: #9b87cf;
+            margin-bottom: 0.4rem;
+        }
+        .photo-placeholder-text {
+            font-size: 0.7rem;
+            color: #b9a9f0;
+        }
 
         .update-footer {
             padding: 1rem 2rem 1.5rem;
@@ -397,13 +329,7 @@
         }
 
         @media (max-width: 780px) {
-            .hero {
-                flex-direction: column;
-            }
             .photo-grid-bottom {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .grid-photos-preview {
                 grid-template-columns: repeat(2, 1fr);
             }
             .update-footer {
@@ -426,7 +352,7 @@
         </div>
     </div>
 
-    <!-- 顶部个人信息 + 小型照片墙预览 -->
+    <!-- 个人信息区域（已删除预览相册） -->
     <div class="hero">
         <div class="info-area">
             <div class="name" id="i18n-name">杨朝钰</div>
@@ -441,22 +367,17 @@
                 <a href="mailto:3205617959@qq.com" id="i18n-email">3205617959@qq.com</a>
             </div>
         </div>
-        <div class="photo-wall-preview">
-            <div class="wall-title"><i class="fas fa-camera"></i> <span id="previewWallTitle">瞬间·预览</span></div>
-            <div class="grid-photos-preview" id="previewGrid"></div>
-            <div style="font-size:0.65rem; margin-top:0.5rem; color:#a58fdf; text-align:center;" id="previewHint">点击上传照片 (JPG/PNG)</div>
-        </div>
     </div>
 
     <!-- 个人简介 -->
     <div class="card">
         <div class="section-title"><i class="fas fa-user-astronaut"></i><span id="i18n-profile-title">个人简介</span></div>
         <div class="bio-text" id="i18n-bio">
-            杨朝钰，华东政法大学金融学专业本科在读，性格热情开朗，善于沟通表达，具备优秀的团队协作与领导能力。熟练运用Python、Excel、WPS进行数据分析与办公，拥有主持人特长。英语CET-4/CET-6已通过。曾担任班级副班长、文艺委员等职务，善于组织协调，追求在金融领域实现复合型发展。
+            杨朝钰，华东政法大学金融学专业本科在读，性格热情开朗，善于沟通表达，具备优秀的团队协作能力。掌握Python数据分析、Excel高级应用及WPS办公技能，拥有主持人特长，通过英语CET-4/CET-6。曾担任班级副班长、文艺委员，组织多项活动，致力于成为兼具金融素养与领导力的复合型人才。
         </div>
     </div>
 
-    <!-- 技能 + 英语证书 -->
+    <!-- 技能 -->
     <div class="card">
         <div class="section-title"><i class="fas fa-code"></i><span id="i18n-skills-title">核心技能 · 熟练度</span></div>
         <div id="skillsContainer"></div>
@@ -475,14 +396,14 @@
         <div class="interests-wrapper" id="interestsContainer"></div>
     </div>
 
-    <!-- 教育经历 + 职务 -->
+    <!-- 教育经历 -->
     <div class="card">
         <div class="section-title"><i class="fas fa-graduation-cap"></i><span id="i18n-edu-title">教育经历 & 学生工作</span></div>
         <div id="eduContainer"></div>
         <div id="dutyContainer" style="margin-top: 1rem;"></div>
     </div>
 
-    <!-- 底部四宫格照片墙 -->
+    <!-- 照片墙 -->
     <div class="photo-wall-bottom">
         <div class="bottom-wall-title"><i class="fas fa-images"></i> <span id="bottomWallTitle">照片墙</span></div>
         <div class="photo-grid-bottom" id="photoGridBottom"></div>
@@ -516,11 +437,11 @@
             eduTitle: "教育经历 & 学生工作",
             education: [
                 { period: "2024年9月 — 至今", title: "华东政法大学 金融学 本科在读", detail: "主修课程：金融学、计量经济学、Python金融分析、公司理财；积极参与校金融案例大赛。" },
-                { period: "2021年9月 — 2024年6月", title: "贵州省都匀第一中学", detail: "高中阶段成绩优异，文科综合突出。" }
+                { period: "2021年9月 — 2024年6月", title: "贵州省都匀第一中学", detail: "高中阶段成绩优异，理科综合突出，多次获校级三好学生。" }
             ],
-            duties: ["📌 班级副班长", "🎭 文艺委员", "📖 语文课代表"],
+            duties: ["📌 班级副班长", "🎭 文艺委员", "📖 数学/英语课代表"],
             lastLabel: "最后更新日期：",
-            previewTitle: "瞬间·预览", bottomTitle: "照片墙", previewHint: "点击上传照片 (JPG/PNG)"
+            bottomTitle: "照片墙"
         },
         en: {
             name: "Zhaoyu Yang", personality: "🔥 Passionate & Outgoing · Excellent Communication", gender: "Male", hometown: "Guizhou, China", school: "ECUPL · Finance", email: "3205617959@qq.com",
@@ -543,23 +464,19 @@
             ],
             duties: ["📌 Class Vice Monitor", "🎭 Arts Commissioner", "📖 Subject Representative (Math/English)"],
             lastLabel: "Last Updated: ",
-            previewTitle: "Moments · Preview", bottomTitle: "Photo Wall", previewHint: "Click to upload (JPG/PNG)"
+            bottomTitle: "Photo Wall"
         }
     };
 
     let currentLang = "zh";
-    let photoImages = ["https://github.com/vgfytfy/YANG.github.io/blob/main/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260320203245_12_1.jpg?raw=true","https://github.com/vgfytfy/YANG.github.io/blob/main/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260320203243_11_1.jpg?raw=true","https://github.com/vgfytfy/YANG.github.io/blob/main/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260320203246_13_1.jpg?raw=true","https://github.com/vgfytfy/YANG.github.io/blob/main/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260320203249_14_1.jpg?raw=true"]; // 底部四个照片
+    let photoImages = ["", "", "", ""];
 
-    // 渲染底部照片墙 + 顶部预览小图
-    function renderPhotoWalls(lang) {
+    function renderPhotoWall(lang) {
         const bottomGrid = document.getElementById("photoGridBottom");
-        const previewGrid = document.getElementById("previewGrid");
-        if (!bottomGrid || !previewGrid) return;
+        if (!bottomGrid) return;
         bottomGrid.innerHTML = "";
-        previewGrid.innerHTML = "";
         
         for (let i = 0; i < 4; i++) {
-            // 底部卡片
             const card = document.createElement("div");
             card.className = "photo-card-bottom";
             card.setAttribute("data-index", i);
@@ -572,37 +489,15 @@
                 icon.className = "fas fa-camera photo-placeholder-icon";
                 const text = document.createElement("span");
                 text.className = "photo-placeholder-text";
-                text.innerText = lang === "zh" ? "上传" : "Upload";
+                text.innerText = lang === "zh" ? "点击上传" : "Upload";
                 card.appendChild(icon);
                 card.appendChild(text);
             }
             card.addEventListener("click", (e) => openFileUpload(i));
             bottomGrid.appendChild(card);
-            
-            // 顶部预览小卡 (同样内容)
-            const previewCard = document.createElement("div");
-            previewCard.className = "photo-card-small";
-            if (photoImages[i] && photoImages[i] !== "") {
-                const img = document.createElement("img");
-                img.src = photoImages[i];
-                previewCard.appendChild(img);
-            } else {
-                const icon = document.createElement("i");
-                icon.className = "fas fa-camera photo-placeholder-icon";
-                const text = document.createElement("span");
-                text.className = "photo-placeholder-text";
-                text.innerText = lang === "zh" ? "添加" : "Add";
-                previewCard.appendChild(icon);
-                previewCard.appendChild(text);
-            }
-            previewCard.addEventListener("click", (e) => openFileUpload(i));
-            previewGrid.appendChild(previewCard);
         }
-        // 更新文案
-        document.getElementById("previewWallTitle").innerText = content[lang].previewTitle;
         document.getElementById("bottomWallTitle").innerText = content[lang].bottomTitle;
-        document.getElementById("previewHint").innerText = content[lang].previewHint;
-        document.getElementById("bottomHint").innerHTML = content[lang].previewHint;
+        document.getElementById("bottomHint").innerHTML = content[lang].bottomTitle === "照片墙" ? "点击上传照片，留住精彩瞬间" : "Click to upload, capture moments";
     }
 
     function openFileUpload(index) {
@@ -615,7 +510,7 @@
                 const reader = new FileReader();
                 reader.onload = (ev) => {
                     photoImages[index] = ev.target.result;
-                    renderPhotoWalls(currentLang);
+                    renderPhotoWall(currentLang);
                 };
                 reader.readAsDataURL(file);
             } else {
@@ -687,7 +582,7 @@
         renderHonors(data);
         renderInterests(data);
         renderEducation(data);
-        renderPhotoWalls(lang);
+        renderPhotoWall(lang);
     }
 
     function setLanguage(lang) {
@@ -707,3 +602,4 @@
 </body>
 </html>
 Create personal homepage
+
